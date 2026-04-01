@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Word Counter Studio</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="page-shell">
+    <header class="hero">
+      <div class="hero-copy">
+        <p class="eyebrow">Writer toolkit</p>
+        <h1>Word Counter Studio</h1>
+        <p class="hero-text">
+          Analyze, refine, and export text with live writing stats, readability insights, keyword breakdowns,
+          and one-click cleanup tools.
+        </p>
+      </div>
+      <div class="hero-panel">
+        <p class="panel-label">Session snapshot</p>
+        <div class="hero-metrics">
+          <div>
+            <span id="heroWords">0</span>
+            <small>Words</small>
+          </div>
+          <div>
+            <span id="heroReadingTime">0 min</span>
+            <small>Read time</small>
+          </div>
+          <div>
+            <span id="heroCharacters">0</span>
+            <small>Characters</small>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <main class="app-grid">
+      <section class="editor-card">
+        <div class="card-header">
+          <div>
+            <p class="section-label">Text workspace</p>
+            <h2>Write or paste content</h2>
+          </div>
+          <button id="sampleBtn" class="ghost-btn" type="button">Load sample</button>
+        </div>
+
+        <textarea id="textInput" placeholder="Start typing here to measure words, characters, reading time, keyword frequency, and more..."></textarea>
+
+        <div class="toolbar">
+          <button id="copyBtn" type="button">Copy</button>
+          <button id="downloadBtn" type="button">Download .txt</button>
+          <button id="trimBtn" type="button">Trim spaces</button>
+          <button id="uppercaseBtn" type="button">UPPERCASE</button>
+          <button id="lowercaseBtn" type="button">lowercase</button>
+          <button id="sentenceCaseBtn" type="button">Sentence Case</button>
+          <button id="clearBtn" type="button" class="danger-btn">Clear</button>
+        </div>
+
+        <div class="status-row">
+          <label class="toggle">
+            <input id="excludeCommonWords" type="checkbox" checked>
+            <span>Ignore common words in keyword analysis</span>
+          </label>
+          <p id="statusMessage" aria-live="polite">Ready for text analysis.</p>
+        </div>
+      </section>
+
+      <section class="stats-panel">
+        <div class="card-header">
+          <div>
+            <p class="section-label">Live analysis</p>
+            <h2>Core statistics</h2>
+          </div>
+        </div>
+
+        <div class="stats-grid">
+          <article class="stat-box accent-a">
+            <span id="wordCount">0</span>
+            <small>Words</small>
+          </article>
+          <article class="stat-box accent-b">
+            <span id="charCount">0</span>
+            <small>Characters</small>
+          </article>
+          <article class="stat-box accent-c">
+            <span id="charNoSpaceCount">0</span>
+            <small>No spaces</small>
+          </article>
+          <article class="stat-box accent-d">
+            <span id="sentenceCount">0</span>
+            <small>Sentences</small>
+          </article>
+          <article class="stat-box accent-e">
+            <span id="paragraphCount">0</span>
+            <small>Paragraphs</small>
+          </article>
+          <article class="stat-box accent-f">
+            <span id="avgWordLength">0</span>
+            <small>Avg word length</small>
+          </article>
+        </div>
+
+        <div class="insight-grid">
+          <article class="insight-card">
+            <p class="section-label">Timing</p>
+            <h3>Reading and speaking</h3>
+            <div class="insight-values">
+              <div>
+                <span id="readingTime">0 min</span>
+                <small>Reading time</small>
+              </div>
+              <div>
+                <span id="speakingTime">0 min</span>
+                <small>Speaking time</small>
+              </div>
+            </div>
+          </article>
+
+          <article class="insight-card">
+            <p class="section-label">Quality</p>
+            <h3>Writing health</h3>
+            <div class="quality-list">
+              <p><strong id="longestWord">-</strong><span>Longest word</span></p>
+              <p><strong id="uniqueWords">0</strong><span>Unique words</span></p>
+              <p><strong id="lexicalDiversity">0%</strong><span>Lexical diversity</span></p>
+            </div>
+          </article>
+        </div>
+
+        <article class="keyword-card">
+          <div class="card-header">
+            <div>
+              <p class="section-label">Keyword view</p>
+              <h2>Top repeated words</h2>
+            </div>
+          </div>
+          <div id="keywordList" class="keyword-list">
+            <p class="empty-state">Add some text to see the most frequent words.</p>
+          </div>
+        </article>
+      </section>
+    </main>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
